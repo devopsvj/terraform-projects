@@ -1,0 +1,99 @@
+
+pipeline {
+    agent any
+    
+    tools {
+        terraform 'Terraform v0.13.2'
+    }
+    
+    environment {
+        TF_DIR = 'aws-example2'
+    }
+
+    stages {
+        stage('Start of Pipeline') {
+            steps {
+                echo 'Start of Pipeline'
+            }
+        }
+        stage('SCM Checkout') {
+            steps {
+                git credentialsId: 'my-devopsvj-github', url: 'https://github.com/devopsvj/terraform-projects.git'
+            }
+        }
+        stage('Switch to TF Workdir'){
+            steps{
+                dir("${env.TF_DIR}") {
+                    sh script: 'pwd && ls -l'
+                } 
+            }
+        }
+        stage('Setup Env Variable') {
+            steps {
+                sh label:'', 
+                script: '''
+                set +x
+                export aws_access_key_id="AWS_ACCESS_KEY_ID"
+                export aws_secret_access_key="AWS_SECRET_ACCESS_KEY"
+                set -x
+                '''
+            }
+        }
+        stage('Terraform Verify') {
+            steps {
+                dir("${env.TF_DIR}"){
+                sh label:'', 
+                script: '''
+                echo "Terraform Verify"
+                sudo '/usr/bin/terraform' -version
+                '''
+                }
+            }
+        }
+        stage('Terraform Init') {
+            steps {
+                dir("${env.TF_DIR}"){
+                sh label:'', 
+                script: '''
+                echo "Terraform Init"
+                sudo '/usr/bin/terraform' init
+                '''
+                }
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                dir("${env.TF_DIR}"){
+                sh label:'', 
+                script: '''
+                echo "Terraform Plan"
+                sudo '/usr/bin/terraform' plan
+                '''
+                }
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                dir("${env.TF_DIR}"){
+                sh label:'', 
+                script: '''
+                echo "Terraform Apply"
+                #sudo '/usr/bin/terraform' apply --auto-approve
+                '''
+                }
+            }
+        }
+        stage('Terraform Destroy') {
+            steps {
+                dir("${env.TF_DIR}"){
+                sh label:'', 
+                script: '''
+                echo "Terraform Destroy"
+                #sudo '/usr/bin/terraform' destroy
+                '''
+                }
+            }
+        }
+
+    }
+}
