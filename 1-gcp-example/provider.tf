@@ -4,3 +4,10 @@ provider "google" {
   region  = "us-central1"
   zone    = "us-central1-c"
 }
+
+# provider "google" {
+#   credentials = file(var.gcp_auth_file)
+#   project = "<Project_ID>"
+#   region  = "us-central1"
+#   zone    = "us-central1-c"
+# }
