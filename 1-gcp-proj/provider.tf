@@ -1,6 +1,7 @@
 provider "google" {
-  credentials = file("~/Documents/Google-GCP-2021/GCP-ServiceAccouts/devopsvj-project/devopsvj-tf-sa/poised-climate-303823-8d82e66fede9.json")
-  project = "poised-climate-303823"
+  version = "~> 3.5.0"
+  credentials = file("/<DIR_PATH>/<Service_Account_File_Name>.json")
+  project = "<Project_ID>"
   region  = "us-central1"
   zone    = "us-central1-c"
 }
