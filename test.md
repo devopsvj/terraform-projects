@@ -1,7 +1,8 @@
-## CHAPTER 6.1
-# Defining Your Network Variables
+# CHAPTER 6.1
 
-# In this lesson, we define our network variables in our main.tf file.
+## Defining Your Network Variables
+
+## In this lesson, we define our network variables in our main.tf file.
 
 - Template to Download
 
