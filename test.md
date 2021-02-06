@@ -27,10 +27,10 @@ module "network" {
 }
 
 ```
-
+-------------------------------------
 ## Here is the variable.tf template:
 
-## Template to Download
+- Template to Download
 
 ```
 variable "project" {
