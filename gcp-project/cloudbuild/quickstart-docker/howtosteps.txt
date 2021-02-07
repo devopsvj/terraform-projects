@@ -1,0 +1,35 @@
+cd Documents/
+cd Google-GCP-2021/
+503  ls -ltr
+  504  mkdir quickstart-docker
+  505  cd quickstart-docker/
+  506  vi quickstart.sh
+  507  vi Dockerfile
+  508  chmod +x quickstart.sh
+  509  gcloud auth login
+  510  gcloud config list
+  511  gcloud config -help
+  512  gcloud config --help
+  513  gcloud auth login
+  514  gcloud config set project poised-climate-303823
+  515  gcloud config list
+  516  gcloud config get-value project
+  517  gcloud artifacts repositories create quickstart-docker-repo --repository-format=docker --location=us-central1 --description="My First Docker Repository"
+  518  gcloud artifacts repostories list
+  519  gcloud artifacts repositories list
+  520  gcloud config get-value project
+  521  gcloud builds submit --tag us-central1-docker.pkg.dev/poised-climate-303823/quickstart-docker-repo/quickstart-image:tag1
+  522  ls -tlr
+  523  vi Dockerfile
+  524  gcloud builds submit --tag us-central1-docker.pkg.dev/poised-climate-303823/quickstart-docker-repo/quickstart-image:tag1
+  525  code .
+  526  atom .
+  527  code .
+  528  code .
+  529  gcloud builds submit --tag us-central1-docker.pkg.dev/poised-climate-303823/quickstart-docker-repo/quickstart-image:tag2
+  530  ls -l
+  531  rm cloudbuild.yaml
+  532  code .
+  533  cat cloudbuild.yaml
+  534  gcloud builds submit --config cloudbuild.yaml
+  535  gcloud builds submit --config cloudbuild.yaml
